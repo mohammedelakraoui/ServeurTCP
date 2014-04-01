@@ -45,6 +45,7 @@ public class HttpFileManager {
                     currentConnexion = server.accept();
                     System.out.println("Nouvelle connexion : " + currentConnexion);
                     try {
+
                         handler.execute(null, new ResponseFiles(currentConnexion.getOutputStream()));
                     } catch (IOException ex) { // end of connection.
                         System.err.println("Fin de connexion : " + ex);

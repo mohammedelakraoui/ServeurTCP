@@ -16,9 +16,11 @@ public class ResponseFiles implements IResponseHttpHandler{
 
 
         Writer writer;
+        String Host="www.google.com";
 
-        public ResponseFiles(OutputStream out){
+        public ResponseFiles(OutputStream out) throws IOException {
             writer = new OutputStreamWriter(out);
+
         }
 
 
@@ -34,7 +36,7 @@ public class ResponseFiles implements IResponseHttpHandler{
         public Writer getWriter() {
             return writer;
         }
-
+      //  public
 
         public OutputStream getOutputStream() {
             return null;  //To change body of implemented methods use File | Settings | File Templates.

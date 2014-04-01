@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ClientTCP/ClientTCP.iml" filepath="$PROJECT_DIR$/ClientTCP/ClientTCP.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HTTPServerExemplePRof/HTTPServerExemplePRof.iml" filepath="$PROJECT_DIR$/HTTPServerExemplePRof/HTTPServerExemplePRof.iml" />
       <module fileurl="file://$PROJECT_DIR$/HTTPStaticServer/HTTPStaticServer.iml" filepath="$PROJECT_DIR$/HTTPStaticServer/HTTPStaticServer.iml" />
       <module fileurl="file://$PROJECT_DIR$/JSONServices/JSONServices.iml" filepath="$PROJECT_DIR$/JSONServices/JSONServices.iml" />
       <module fileurl="file://$PROJECT_DIR$/ServeurClientTCP/ServeurClientTCP.iml" filepath="$PROJECT_DIR$/ServeurClientTCP/ServeurClientTCP.iml" />
