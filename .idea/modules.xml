@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ClientTCP/ClientTCP.iml" filepath="$PROJECT_DIR$/ClientTCP/ClientTCP.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HTTPStaticServer/HTTPStaticServer.iml" filepath="$PROJECT_DIR$/HTTPStaticServer/HTTPStaticServer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JSONServices/JSONServices.iml" filepath="$PROJECT_DIR$/JSONServices/JSONServices.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ServeurClientTCP/ServeurClientTCP.iml" filepath="$PROJECT_DIR$/ServeurClientTCP/ServeurClientTCP.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ServeurTCP.iml" filepath="$PROJECT_DIR$/ServeurTCP.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ShowFiles/ShowFiles.iml" filepath="$PROJECT_DIR$/ShowFiles/ShowFiles.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TransferFiles/TransferFiles.iml" filepath="$PROJECT_DIR$/TransferFiles/TransferFiles.iml" />
+    </modules>
+  </component>
+</project>
+

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="MyVerySign:war">
+    <output-path>$PROJECT_DIR$/../my-verysign/target</output-path>
+    <root id="archive" name="SpringMVC.war">
+      <element id="artifact" artifact-name="MyVerySign:war exploded" />
+    </root>
+  </artifact>
+</component>
