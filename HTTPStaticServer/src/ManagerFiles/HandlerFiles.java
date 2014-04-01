@@ -19,31 +19,26 @@ public class HandlerFiles implements IHttpHandler{
 
     @Override
     public void execute(IRequestHttpHandler request, IResponseHttpHandler response) throws IOException {
-      String Path = new File("").getAbsolutePath() + File.separator + "www";
-      response.getWriter().write("<html><h2>Server Root-->"+Path+"</h2><body><ul>");
-      //  response.getWriter().write("<a href='"+Path+"'>root</a>");
-        File folder = new File(Path);
-      ListeFilesAndFolders(folder,response,Path);
-      response.getWriter().write("</ul></body></html>");
-      response.flush();
-
+    	String Path = new File("").getAbsolutePath() + File.separator + "www";
+    	response.getWriter().write("<html><h2>Server Root-->"+Path+"</h2><body><ul>");
+    	//response.getWriter().write("<a href='"+Path+"'>root</a>");
+    	File folder = new File(Path);
+    	ListeFilesAndFolders(folder,response,Path);
+    	response.getWriter().write("</ul></body></html>");
+    	response.flush();
     }
+
     public String listFilesForFolder(String Path) {
         String html="<html><h2>Server Root-->"+Path+"</h2><body><ul>";
         File directory = new File(Path);
         File[] fList = directory.listFiles();
         for (File file : fList){
-
             html+="<li><h3><a href="+Path+"\\"+file.getName()+"/>"+file.getName()+"</h3></li>";
         }
         html+="</ul></body></html>";
-
-
         return html;
     }
     public void ListeFilesAndFolders(File file,IResponseHttpHandler response,String root) throws IOException {
-
-
         response.getWriter().write("<li><h3><a href='"+root+"\\"+file.getName()+"'/>"+file.getName()+"</h3></li>");
         File[] children = file.listFiles();
         if(children==null)
@@ -54,7 +49,5 @@ public class HandlerFiles implements IHttpHandler{
         {
             ListeFilesAndFolders(child, response,root);
         }
- 
     }
-
 }

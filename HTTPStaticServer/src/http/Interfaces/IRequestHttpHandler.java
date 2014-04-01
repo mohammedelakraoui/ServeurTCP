@@ -15,23 +15,24 @@ public interface IRequestHttpHandler {
      */
     String getParameter(String key);
 
-
-    ICookie getCookies();
+    ICookie[] getCookies();
 
     /* Return Http Method (GET POST)*/
     String getMethod();
 
     String getHttpVersion();
 
+    String getUrl();
+
     String[] getHeaderNames();
 
     String getHeader(String key);
 
-
     String getRealPath(String path);
 
     String getHostname();
+    
+    String getPort();
 
     String getRemoteAddress();
-
 }

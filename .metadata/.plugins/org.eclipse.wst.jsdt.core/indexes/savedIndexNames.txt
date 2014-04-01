@@ -1,0 +1,5 @@
+INDEX VERSION 1.122+C:\Documents and Settings\pierre jean\Mes documents\Ernsso\ESGI\5 eme année\Architecture Distribuée\ServeurTCP\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+1226329179.index
+3783191117.index
+3647365849.index
+3232258114.index

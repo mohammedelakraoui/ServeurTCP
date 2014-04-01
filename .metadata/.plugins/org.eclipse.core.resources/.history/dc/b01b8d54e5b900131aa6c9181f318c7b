@@ -1,0 +1,19 @@
+{
+	"port" : 9876,
+	"hosts" : [{
+		"name" : "mon-site.com",
+		"document_root" : "/var/www/site1.com",
+		"handlers" : [ {
+			"clazz" : "ManagerFiles.HandlerFiles",
+			"pattern" : "^.*$"
+		}
+		]
+	},{
+		"name" : "un-site.org",
+		"document_root" : "C:/wamp/www/site2.com",
+		"handlers" : [ {
+			"clazz" : "ManagerFiles.HandlerFiles",
+			"pattern" : "^.*$"
+		}]
+	}]
+}

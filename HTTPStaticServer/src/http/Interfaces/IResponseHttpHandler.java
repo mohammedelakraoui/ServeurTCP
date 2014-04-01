@@ -15,5 +15,4 @@ public interface IResponseHttpHandler {
     void setContentType(String contentType);
     void addCookie(String name, String value, int duration, int path);
     void puturl(String URL) throws IOException;
-
 }

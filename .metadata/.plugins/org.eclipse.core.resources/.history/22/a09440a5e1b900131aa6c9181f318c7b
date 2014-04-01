@@ -1,0 +1,71 @@
+package http.impl;
+
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
+import java.net.HttpURLConnection;
+import java.net.Socket;
+import java.net.URL;
+
+import http.Interfaces.IResponseHttpHandler;
+
+public class ResponseHttpHandler implements IResponseHttpHandler {
+    private Writer writer;
+	private Socket socket;
+	private RequestHttpHandler request;
+	
+	public ResponseHttpHandler(Socket s, RequestHttpHandler r){
+        writer = new OutputStreamWriter(out);
+	}
+
+	@Override
+	public void flush() {
+        try {
+            writer.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+	}
+
+	@Override
+	public Writer getWriter() {
+        return writer;
+	}
+
+	@Override
+	public OutputStream getOutputStream() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void addHeader(String key, String value) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void setContentType(String contentType) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void addCookie(String name, String value, int duration, int path) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void puturl(String URL) throws IOException {
+        URL url = new URL(URL);
+        HttpURLConnection httpCon = (HttpURLConnection) url.openConnection();
+        httpCon.setDoOutput(true);
+        httpCon.setRequestMethod("PUT");
+        OutputStreamWriter out = new OutputStreamWriter(httpCon.getOutputStream());
+        out.write("Resource content");
+        out.close();
+        httpCon.getInputStream();
+	}
+}
