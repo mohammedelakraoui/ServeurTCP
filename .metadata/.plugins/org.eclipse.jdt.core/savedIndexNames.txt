@@ -1,0 +1,7 @@
+INDEX VERSION 1.126+C:\Users\Ernsso\Documents\ESGI\5eme_annee\ArchiDistrib\ServeurTCP\.metadata\.plugins\org.eclipse.jdt.core
+3261799716.index
+1652314424.index
+1702473334.index
+2134583008.index
+2009609959.index
+835449938.index
