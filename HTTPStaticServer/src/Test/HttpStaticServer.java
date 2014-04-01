@@ -12,25 +12,31 @@ import java.net.Socket;
  * To change this template use File | Settings | File Templates.
  */
 public class HttpStaticServer {
+	private static HttpStaticServer instance = null;
     ServerSocket server = null;
     Socket currentConnexion;
     MyHandlerTest handler = new MyHandlerTest();
     int port = 1234;
     public static void main (String args[]) throws IOException {
-        new HttpStaticServer().run();
+        HttpStaticServer.getInstance().run();
     }
 
-
-    public HttpStaticServer() {
+	public static HttpStaticServer getInstance() {
+		if(null == instance)
+			instance = new HttpStaticServer();
+		return instance;
+	}
+	
+	private HttpStaticServer() {
         try {
             server = new ServerSocket(port);
         } catch (IOException ex) {
-            System.err.println("Impossible de crÃ©er un socket serveur sur ce port : " + ex);
+            System.err.println("Impossible de créer un socket serveur sur ce port : " + ex);
 
             try { // trying an anonymous one.
                 server = new ServerSocket(0);
             } catch (IOException ex2) { // Impossible to connect!
-                System.err.println("Impossible de crÃ©er un socket serveur : " + ex2);
+                System.err.println("Impossible de créer un socket serveur : " + ex2);
             }
         }
 
@@ -39,15 +45,13 @@ public class HttpStaticServer {
     public void run() {
         if (null == server)
             return;
-
-
         try {
             System.out.println("En attente de connexion sur le port : " + server.getLocalPort());
             while (true) {
                 currentConnexion = server.accept();
                 System.out.println("Nouvelle connexion : " + currentConnexion);
                 try {
-                    handler.execute(null, new SimpleResponse(currentConnexion.getOutputStream()));
+                    handler.execute(new RequestHttpHandler(currentConnexion), new SimpleResponse(currentConnexion.getOutputStream()));
                 } catch (IOException ex) { // end of connection.
                     System.err.println("Fin de connexion : " + ex);
                 }
