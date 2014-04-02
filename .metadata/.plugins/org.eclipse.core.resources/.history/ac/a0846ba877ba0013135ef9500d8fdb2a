@@ -17,7 +17,6 @@ public class ResponseHttpHandler implements IResponseHttpHandler {
 	
 	public ResponseHttpHandler(Socket s, RequestHttpHandler r) throws IOException {
         this.socket = s;
-        this.request = r;
         writer = new OutputStreamWriter(this.socket.getOutputStream());
 	}
 
@@ -37,13 +36,7 @@ public class ResponseHttpHandler implements IResponseHttpHandler {
 
 	@Override
 	public OutputStream getOutputStream() {
-		try {
-			return this.socket.getOutputStream();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
+		return this;
 	}
 
 	@Override

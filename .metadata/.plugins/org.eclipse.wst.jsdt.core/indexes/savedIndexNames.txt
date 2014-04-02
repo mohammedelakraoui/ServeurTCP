@@ -1,5 +1,1 @@
 INDEX VERSION 1.122+C:\Users\Ernsso\Documents\ESGI\5eme_annee\ArchiDistrib\ServeurTCP\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-2490248248.index
-1507365319.index
-3834529858.index
-1106644332.index

@@ -43,7 +43,6 @@ public class ResponseHttpHandler implements IResponseHttpHandler {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;
 	}
 
 	@Override

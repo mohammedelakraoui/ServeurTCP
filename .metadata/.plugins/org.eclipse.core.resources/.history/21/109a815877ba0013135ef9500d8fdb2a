@@ -15,10 +15,8 @@ public class ResponseHttpHandler implements IResponseHttpHandler {
 	private Socket socket;
 	private RequestHttpHandler request;
 	
-	public ResponseHttpHandler(Socket s, RequestHttpHandler r) throws IOException {
-        this.socket = s;
-        this.request = r;
-        writer = new OutputStreamWriter(this.socket.getOutputStream());
+	public ResponseHttpHandler(Socket s, RequestHttpHandler r) throws IOException{
+        writer = new OutputStreamWriter(s.getOutputStream());
 	}
 
 	@Override
@@ -37,12 +35,7 @@ public class ResponseHttpHandler implements IResponseHttpHandler {
 
 	@Override
 	public OutputStream getOutputStream() {
-		try {
-			return this.socket.getOutputStream();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		// TODO Auto-generated method stub
 		return null;
 	}
 
