@@ -24,7 +24,8 @@ import java.util.regex.Pattern;
  * To change this template use File | Settings | File Templates.
  */
 public class HttpStaticServer {
-	private final static String CONFIG_PATH = "../config.js";
+    final static String path = new File("").getAbsolutePath() + File.separator+"config.js";
+	private final static String CONFIG_PATH =path;
 	private static HttpStaticServer instance = null;
 	
 	File configFile;
