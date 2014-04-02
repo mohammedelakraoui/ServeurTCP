@@ -4,13 +4,13 @@
 		"name" : "mon-site.com",
 		"document_root" : "/www/site1.com",
 		"handlers" : [ {
-			"clazz" : "Test.MyHandlerTest",
+			"clazz" : "ManagerFiles.HandlerFiles",
 			"pattern" : "^.*$"
 		}
 		]
 	},{
 		"name" : "un-site.org",
-		"document_root" : "C:/www/",
+		"document_root" : "C:/wamp/www/",
 		"handlers" : [ {
 			"clazz" : "ManagerFiles.HandlerFiles",
 			"pattern" : "^.*$"

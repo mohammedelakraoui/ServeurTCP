@@ -1,0 +1,80 @@
+package ManagerFiles;
+
+import com.sun.org.apache.xpath.internal.SourceTree;
+import http.Interfaces.IHttpHandler;
+import http.Interfaces.IRequestHttpHandler;
+import http.Interfaces.IResponseHttpHandler;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.URL;
+import java.net.URLConnection;
+import java.nio.file.Path;
+import java.util.Date;
+
+import org.omg.CORBA.Request;
+
+/**
+ * Created by server-pc on 31/03/14.
+ */
+public class HandlerFiles implements IHttpHandler{
+	String css = "a.icon {text-decoration: none;}"
+				+"a.icon:hover {text-decoration: underline;}"
+	  			+"a.file {background : url(\"\") left top no-repeat;}"
+				+"a.dir {background : url(\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAd5JREFUeNqMU79rFUEQ/vbuodFEEkzAImBpkUabFP4ldpaJhZXYm/RiZWsv/hkWFglBUyTIgyAIIfgIRjHv3r39MePM7N3LcbxAFvZ2b2bn22/mm3XMjF+HL3YW7q28YSIw8mBKoBihhhgCsoORot9d3/ywg3YowMXwNde/PzGnk2vn6PitrT+/PGeNaecg4+qNY3D43vy16A5wDDd4Aqg/ngmrjl/GoN0U5V1QquHQG3q+TPDVhVwyBffcmQGJmSVfyZk7R3SngI4JKfwDJ2+05zIg8gbiereTZRHhJ5KCMOwDFLjhoBTn2g0ghagfKeIYJDPFyibJVBtTREwq60SpYvh5++PpwatHsxSm9QRLSQpEVSd7/TYJUb49TX7gztpjjEffnoVw66+Ytovs14Yp7HaKmUXeX9rKUoMoLNW3srqI5fWn8JejrVkK0QcrkFLOgS39yoKUQe292WJ1guUHG8K2o8K00oO1BTvXoW4yasclUTgZYJY9aFNfAThX5CZRmczAV52oAPoupHhWRIUUAOoyUIlYVaAa/VbLbyiZUiyFbjQFNwiZQSGl4IDy9sO5Wrty0QLKhdZPxmgGcDo8ejn+c/6eiK9poz15Kw7Dr/vN/z6W7q++091/AQYA5mZ8GYJ9K0AAAAAASUVORK5CYII=\") left top no-repeat;}"
+				+"a.up {background : url(\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAmlJREFUeNpsU0toU0EUPfPysx/tTxuDH9SCWhUDooIbd7oRUUTMouqi2iIoCO6lceHWhegy4EJFinWjrlQUpVm0IIoFpVDEIthm0dpikpf3ZuZ6Z94nrXhhMjM3c8895977BBHB2PznK8WPtDgyWH5q77cPH8PpdXuhpQT4ifR9u5sfJb1bmw6VivahATDrxcRZ2njfoaMv+2j7mLDn93MPiNRMvGbL18L9IpF8h9/TN+EYkMffSiOXJ5+hkD+PdqcLpICWHOHc2CC+LEyA/K+cKQMnlQHJX8wqYG3MAJy88Wa4OLDvEqAEOpJd0LxHIMdHBziowSwVlF8D6QaicK01krw/JynwcKoEwZczewroTvZirlKJs5CqQ5CG8pb57FnJUA0LYCXMX5fibd+p8LWDDemcPZbzQyjvH+Ki1TlIciElA7ghwLKV4kRZstt2sANWRjYTAGzuP2hXZFpJ/GsxgGJ0ox1aoFWsDXyyxqCs26+ydmagFN/rRjymJ1898bzGzmQE0HCZpmk5A0RFIv8Pn0WYPsiu6t/Rsj6PauVTwffTSzGAGZhUG2F06hEc9ibS7OPMNp6ErYFlKavo7MkhmTqCxZ/jwzGA9Hx82H2BZSw1NTN9Gx8ycHkajU/7M+jInsDC7DiaEmo1bNl1AMr9ASFgqVu9MCTIzoGUimXVAnnaN0PdBBDCCYbEtMk6wkpQwIG0sn0PQIUF4GsTwLSIFKNqF6DVrQq+IWVrQDxAYQC/1SsYOI4pOxKZrfifiUSbDUisif7XlpGIPufXd/uvdvZm760M0no1FZcnrzUdjw7au3vu/BVgAFLXeuTxhTXVAAAAAElFTkSuQmCC \") left top no-repeat;}";	
+    @Override
+    public void execute(IRequestHttpHandler request, IResponseHttpHandler response) throws IOException {
+    	String Path = new File("").getAbsolutePath() + File.separator + "www";
+    	String html = "";
+    	File file = new File(request.getRealPath(request.getUrl()));
+    	if(file.isFile()) {
+    		
+    	}
+    	else if(file.isDirectory()) {
+        	html += "<html><head><meta charset=\"utf-8\"><style></style></head><body><h1>Index of "+request.getUrl()+"</h1><table><tr><th>Nom</th><th>Taille</th><th>Date de modification</th></tr>";
+        	html += "<tr><td><a class=\"icon up\" href=\"http://"+request.getHostname()+":"+request.getPort()+request.getUrl().substring(0, request.getUrl().lastIndexOf("/"))+"\">Parent directory</a></td><td></td><td></td></tr>";
+        	html += ListeFilesAndFolders(file, request, response);
+        	html += "</table></body></html>";
+    	}
+    	response.getWriter().write(html);
+    	response.flush();
+    }
+
+    private String listFilesForFolder(String Path) {
+        String html="<html><h2>Server Root-->"+Path+"</h2><body><ul>";
+        File directory = new File(Path);
+        File[] fList = directory.listFiles();
+        for (File file : fList){
+            html+="<li><h3><a href="+Path+"\\"+file.getName()+"/>"+file.getName()+"</h3></li>";
+        }
+        html+="</ul></body></html>";
+        return html;
+    }
+    
+    private String ListeFilesAndFolders(File file, IRequestHttpHandler request, IResponseHttpHandler response) throws IOException {
+        String html = "";
+        File[] children = file.listFiles();
+        if(children!=null)
+	        for (File child : children)
+	        {
+	        	Date date = new Date(child.lastModified());
+	        	String link = "<a class=\"icon dir\" href=\"http://"+request.getHostname()+":"+request.getPort()+request.getUrl()+child.getName()+"\">"+child.getName()+"</a>";
+	        	if(child.isDirectory())
+	        		html += "<tr><td>"+link+"</td><td></td><td>"+date+"</td></tr>";
+	        	else
+	        		html += "<tr><td>"+link+"</td><td>"+getReadableByte(child.length(), false)+"</td><td>"+date+"</td></tr>";
+	        }
+        return html;
+    }
+    
+    private static String getReadableByte(long bytes, boolean si) {
+        int unit = si ? 1000 : 1024;
+        if (bytes < unit) 
+        	return bytes + " B";
+        int exp = (int) (Math.log(bytes) / Math.log(unit));
+        String pre = (si ? "kMGTPE" : "KMGTPE").charAt(exp-1) + (si ? "" : "i");
+        return String.format("%.1f %sB", bytes / Math.pow(unit, exp), pre);
+    }
+}

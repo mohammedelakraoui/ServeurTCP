@@ -92,6 +92,14 @@ public class RequestHttpHandler implements IRequestHttpHandler {
 
 	@Override
 	public String getPort() {
+		if(null == this.port) {
+			String h = this.httpHeaders.get("host");
+			int i = h.lastIndexOf(":");
+			if(-1 == i)
+				this.port = "80";
+			else
+				this.port = h.substring(i+1);
+		}
 		return this.port;
 	}
 }
