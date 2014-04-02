@@ -7,6 +7,9 @@ import java.io.Writer;
 import java.net.HttpURLConnection;
 import java.net.Socket;
 import java.net.URL;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.Map.Entry;
 
 import http.Interfaces.IResponseHttpHandler;
 
@@ -14,17 +17,19 @@ public class ResponseHttpHandler implements IResponseHttpHandler {
     private Writer writer;
 	private Socket socket;
 	private RequestHttpHandler request;
-	
+		
 	public ResponseHttpHandler(Socket s, RequestHttpHandler r) throws IOException {
         this.socket = s;
         this.request = r;
-        writer = new OutputStreamWriter(this.socket.getOutputStream());
+        
+        this.writer = new OutputStreamWriter(this.socket.getOutputStream());
+//        this.writer.write("HTTP/1.1 200 OK\r\n");
 	}
 
 	@Override
 	public void flush() {
         try {
-            writer.flush();
+            this.writer.flush();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -32,7 +37,7 @@ public class ResponseHttpHandler implements IResponseHttpHandler {
 
 	@Override
 	public Writer getWriter() {
-        return writer;
+        return this.writer;
 	}
 
 	@Override
@@ -48,14 +53,20 @@ public class ResponseHttpHandler implements IResponseHttpHandler {
 
 	@Override
 	public void addHeader(String key, String value) {
-		// TODO Auto-generated method stub
-
+		try {
+			this.writer.write(key+":"+value+"\r\n");
+		} catch (IOException e) {
+			System.out.println(e);
+		}
 	}
 
 	@Override
 	public void setContentType(String contentType) {
-		// TODO Auto-generated method stub
-
+		try {
+			this.writer.write("Content-Type:"+contentType+"\r\n");
+		} catch (IOException e) {
+			System.out.println(e);
+		}
 	}
 
 	@Override

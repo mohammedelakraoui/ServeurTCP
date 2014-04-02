@@ -1,6 +1,2 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<typeInfoHistroy>
-<typeInfo handle="=HTTPStaticServer/src&lt;http.Interfaces{ICookie.java[ICookie" modifiers="513" timestamp="1396420893503"/>
-<typeInfo handle="=HTTPStaticServer/src&lt;http.Interfaces{IHttpHandler.java[IHttpHandler" modifiers="513" timestamp="1396420893506"/>
-<typeInfo handle="=HTTPStaticServer/src&lt;http.Interfaces{IResponseHttpHandler.java[IResponseHttpHandler" modifiers="513" timestamp="1396334936324"/>
-</typeInfoHistroy>
+<typeInfoHistroy/>

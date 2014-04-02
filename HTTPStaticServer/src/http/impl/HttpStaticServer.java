@@ -83,7 +83,7 @@ public class HttpStaticServer {
                 System.out.println("Nouvelle connexion : " + currentConnexion);
                 try {
                 	RequestHttpHandler request = requestBuilder.build(currentConnexion);
-                	ResponseFiles response = new ResponseFiles(currentConnexion, request);
+                	ResponseHttpHandler response = new ResponseHttpHandler(currentConnexion, request);
     				
                 	if(null != request.host)
                     for (Handler handlerConfig : request.host.handlers){

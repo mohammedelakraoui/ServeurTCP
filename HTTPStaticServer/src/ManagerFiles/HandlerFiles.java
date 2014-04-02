@@ -11,10 +11,13 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.math.BigInteger;
 import java.net.URL;
 import java.net.URLConnection;
 import java.nio.file.Path;
+import java.security.SecureRandom;
 import java.util.Date;
+import java.util.Map.Entry;
 
 import org.omg.CORBA.Request;
 
@@ -23,6 +26,7 @@ import org.omg.CORBA.Request;
  */
 public class HandlerFiles implements IHttpHandler{
 	String css = "a.icon {text-decoration: none;} a.icon:hover {text-decoration: underline;}";	
+	
     @Override
     public void execute(IRequestHttpHandler request, IResponseHttpHandler response) throws IOException {
     	String html = "";
@@ -39,6 +43,8 @@ public class HandlerFiles implements IHttpHandler{
         	html += ListeFilesAndFolders(file, request, response);
         	html += "</table></body></html>";
     	}
+//    	this.setResponseHeader(response, html);
+//    	response.getWriter().write("\r\n");
     	response.getWriter().write(html);
     	response.flush();
     }
@@ -53,6 +59,20 @@ public class HandlerFiles implements IHttpHandler{
 //        html+="</ul></body></html>";
 //        return html;
 //    }
+    private void setResponseHeader(IResponseHttpHandler response, String content)
+    {
+    	Date date = new Date();
+    	SecureRandom random = new SecureRandom();
+    	response.setContentType("text/html; charset=UTF-8");
+    	response.addHeader("Transfer-Encoding", "chunked");
+//    	response.addHeader("Date", date.toString());
+    	response.addHeader("Server", "HttpStaticServer");
+    	response.addHeader("Connection", "close");
+    	//Identifie une version spécifique de la resource
+    	response.addHeader("Etag", new BigInteger(130, random).toString(32));
+    	response.addHeader("Content-Encoding", "identity");
+    	response.addHeader("Content-Length", Integer.toString(content.length()));
+    }
     
     private String ListeFilesAndFolders(File file, IRequestHttpHandler request, IResponseHttpHandler response) throws IOException {
         String html = "";
