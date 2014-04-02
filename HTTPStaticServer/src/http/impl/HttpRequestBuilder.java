@@ -23,12 +23,13 @@ public class HttpRequestBuilder {
 		if (null == host) {
 			throw new Exception("Not Host Supplied (HTTP/1.1)");
 		}
-		request.host = httpServer.hosts.get(host);
+		request.host = httpServer.hosts.get(host.substring(0, host.indexOf(":")));
 		return request;
 	}
 	
 	private void buildMethodAndGetParameters(RequestHttpHandler request, BufferedReader reader) throws Exception {
 		String line = reader.readLine();
+		request.rawRequest += line+"\r\n";
 		if(null != line) {
 			String[] parts = line.split(" ");
 			if (3 != parts.length)
@@ -52,6 +53,7 @@ public class HttpRequestBuilder {
 	private void buildHeaders(RequestHttpHandler request, BufferedReader reader) throws IOException {
 		String line;
 		while ( null != (line = reader.readLine()) && ! line.isEmpty() ) {
+			request.rawRequest += line+"\r\n";
 			int splitIndex = line.indexOf(':');
 			if (-1 != splitIndex) {
 				// TODO DecodeUri.

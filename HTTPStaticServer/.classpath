@@ -2,8 +2,8 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="C:/Documents and Settings/pierre jean/Mes documents/Ernsso/ESGI/5 eme année/Architecture Distribuée/ServeurTCP/HTTPStaticServer/lib/jackson-annotations-2.0.0.jar"/>
-	<classpathentry kind="lib" path="C:/Documents and Settings/pierre jean/Mes documents/Ernsso/ESGI/5 eme année/Architecture Distribuée/ServeurTCP/HTTPStaticServer/lib/jackson-core-2.0.0.jar"/>
-	<classpathentry kind="lib" path="C:/Documents and Settings/pierre jean/Mes documents/Ernsso/ESGI/5 eme année/Architecture Distribuée/ServeurTCP/HTTPStaticServer/lib/jackson-databind-2.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Ernsso/Documents/ESGI/5eme_annee/ArchiDistrib/ServeurTCP/HTTPStaticServer/lib/jackson-databind-2.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Ernsso/Documents/ESGI/5eme_annee/ArchiDistrib/ServeurTCP/HTTPStaticServer/lib/jackson-core-2.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Ernsso/Documents/ESGI/5eme_annee/ArchiDistrib/ServeurTCP/HTTPStaticServer/lib/jackson-annotations-2.0.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

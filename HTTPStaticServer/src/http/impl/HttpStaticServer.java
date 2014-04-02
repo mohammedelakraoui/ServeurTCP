@@ -17,6 +17,7 @@ import java.util.regex.Pattern;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import ManagerFiles.HandlerFiles;
 import ManagerFiles.ResponseFiles;
 import Test.MyHandlerTest;
 
@@ -54,6 +55,9 @@ public class HttpStaticServer {
 		ObjectMapper objectMapper = new ObjectMapper();
 		Config config = objectMapper.readValue(configFile, Config.class);
 		
+		for(Host h : config.hosts)
+			hosts.put(h.name, h);
+    	
 		requestBuilder = new HttpRequestBuilder(this);
 		try {
             server = new ServerSocket(config.port);
@@ -90,11 +94,12 @@ public class HttpStaticServer {
     							handler = (IHttpHandler) Class.forName(handlerConfig.clazz).newInstance();
     							handlersPool.put(handlerConfig.clazz, handler);
     						}
+    						System.out.println(handler.toString());
     						handler.execute(request, response);
     						break;
     					}
     				}
-                } catch (IOException ex) { // end of connection.
+                } catch (Exception ex) { // end of connection.
                     System.err.println("Fin de connexion : " + ex);
                 }
                 currentConnexion.close();

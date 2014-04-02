@@ -14,12 +14,12 @@ import http.conf.Host;
 
 public class RequestHttpHandler implements IRequestHttpHandler {
 	public HashMap<String, String> httpHeaders = new HashMap<>();
-
 	public HashMap<String, String> httpParameters = new HashMap<>();
 	public HashMap<String, String> httpCookies = new HashMap<>();
 
 	public Host host;
-	
+
+	public String rawRequest = "";
 	public String port;
 	public String method;
 	public String url;
