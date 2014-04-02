@@ -129,6 +129,7 @@ public class SimpleProxyServer {
             } catch (IOException e) {
                 System.err.println(e);
             } finally {
+
                 try {
                     if (server != null)
                         server.close();
