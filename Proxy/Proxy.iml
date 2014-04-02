@@ -10,7 +10,17 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/lib/jackson-annotations-2.0.0.jar!/" />
+          <root url="jar://$MODULE_DIR$/../HTTPStaticServer/lib/jackson-databind-2.0.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module" module-name="HTTPStaticServer" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../HTTPStaticServer/lib/jackson-annotations-2.0.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -19,16 +29,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/lib/jackson-core-2.0.0.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/lib/jackson-databind-2.0.0.jar!/" />
+          <root url="jar://$MODULE_DIR$/../HTTPStaticServer/lib/jackson-core-2.0.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

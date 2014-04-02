@@ -1,25 +1,20 @@
 package http.impl;
 
+import ManagerFiles.ResponseFiles;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import http.Interfaces.IHttpHandler;
 import http.conf.Config;
 import http.conf.Handler;
 import http.conf.Host;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import ManagerFiles.HandlerFiles;
-import ManagerFiles.ResponseFiles;
-import Test.MyHandlerTest;
 
 /**
  * Created with IntelliJ IDEA.
@@ -29,7 +24,8 @@ import Test.MyHandlerTest;
  * To change this template use File | Settings | File Templates.
  */
 public class HttpStaticServer {
-	private final static String CONFIG_PATH = "config.js";
+    final static String path = new File("").getAbsolutePath() + File.separator+"config.js";
+	private final static String CONFIG_PATH =path;
 	private static HttpStaticServer instance = null;
 	
 	File configFile;
@@ -38,8 +34,8 @@ public class HttpStaticServer {
 	ServerSocket server = null;
     Socket currentConnexion;
 
-	public Map<String, Host> hosts = new HashMap<>();
-	Map<String, IHttpHandler> handlersPool = new HashMap<>();
+	public Map<String, Host> hosts = new HashMap<String,Host>();
+	Map<String, IHttpHandler> handlersPool = new HashMap<String,IHttpHandler>();
     
 	public static HttpStaticServer getInstance() throws Exception {
 		if(null == instance)
@@ -54,7 +50,7 @@ public class HttpStaticServer {
 		
 		ObjectMapper objectMapper = new ObjectMapper();
 		Config config = objectMapper.readValue(configFile, Config.class);
-		
+
 		for(Host h : config.hosts)
 			hosts.put(h.name, h);
     	
@@ -63,14 +59,15 @@ public class HttpStaticServer {
             server = new ServerSocket(config.port);
         }
 		catch (IOException ex) {
-            System.err.println("Impossible de créer un socket serveur sur ce port : " + ex);
+            System.err.println("Impossible de crï¿½er un socket serveur sur ce port : " + ex);
             try { // trying an anonymous one.
                 server = new ServerSocket(0);
             }
             catch (IOException ex2) { // Impossible to connect!
-                System.err.println("Impossible de créer un socket serveur : " + ex2);
+                System.err.println("Impossible de crï¿½er un socket serveur : " + ex2);
             }
         }
+
     }
 
     public void run() {

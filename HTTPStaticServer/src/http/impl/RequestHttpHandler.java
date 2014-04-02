@@ -1,21 +1,15 @@
 package http.impl;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.Socket;
-import java.net.SocketException;
-import java.util.HashMap;
-
 import http.Interfaces.ICookie;
 import http.Interfaces.IRequestHttpHandler;
 import http.conf.Host;
 
+import java.util.HashMap;
+
 public class RequestHttpHandler implements IRequestHttpHandler {
-	public HashMap<String, String> httpHeaders = new HashMap<>();
-	public HashMap<String, String> httpParameters = new HashMap<>();
-	public HashMap<String, String> httpCookies = new HashMap<>();
+	public HashMap<String, String> httpHeaders = new HashMap<String,String>();
+	public HashMap<String, String> httpParameters = new HashMap<String,String>();
+	public HashMap<String, String> httpCookies = new HashMap<String,String>();
 
 	public Host host;
 

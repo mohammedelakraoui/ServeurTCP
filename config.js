@@ -1,5 +1,6 @@
 {
 	"port" : 9876,
+    "proxyport": 1314,
 	"hosts" : [{
 		"name" : "mon-site.com",
 		"document_root" : "/www/site1.com",
@@ -16,4 +17,5 @@
 			"pattern" : "^.*$"
 		}]
 	}]
+
 }
