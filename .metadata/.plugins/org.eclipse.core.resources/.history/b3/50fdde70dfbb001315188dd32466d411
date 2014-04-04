@@ -57,15 +57,17 @@ public class Grabber implements Runnable {
 					links.add(makeAbsolute(url, link));
 				}
 			}
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return links;
 	}
 	
 	private boolean valid(String s) {
-		return !s.matches("javascript:.*|mailto:.*");
+		if (s.matches("javascript:.*|mailto:.*")) {
+			return false;
+		}
+		return true;
 	}
 	
 	private String makeAbsolute(String url, String link) {

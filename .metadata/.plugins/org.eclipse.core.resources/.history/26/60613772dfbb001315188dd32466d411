@@ -65,7 +65,7 @@ public class Grabber implements Runnable {
 	}
 	
 	private boolean valid(String s) {
-		return !s.matches("javascript:.*|mailto:.*");
+		return !s.matches("javascript:.*|mailto:.*")
 	}
 	
 	private String makeAbsolute(String url, String link) {

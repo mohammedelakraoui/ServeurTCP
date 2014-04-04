@@ -9,7 +9,7 @@ public class App {
 		Thread thread = new MyThread();
 		thread.start();
 		
-		Runnable r = new Grabber("http://www.oracle.com/index.html");
+		MyRunnable r = new MyRunnable();
 		Thread t = new Thread(r); // création
 		t.start(); // start
 	}
