@@ -1,0 +1,23 @@
+package fr.esgi.project.ProcessBuilder;
+
+import java.io.File;
+import java.io.IOException;
+
+import fr.esgi.project.ProcessBuilder.interfaces.ICompress;
+
+public class Compress implements ICompress {
+	private final static String WINRAR_PATH = "C:\\Program Files\\WinRAR\\rar.exe";
+
+	@Override
+	public void compress(File dest, File... src){
+		String cmd = WINRAR_PATH+" -a "+dest.getAbsolutePath();
+		for (File f : src)
+			cmd += " "+f.getAbsolutePath();
+		System.out.println(cmd);
+		try {
+			Runtime.getRuntime().exec(cmd);
+		} catch (IOException e) {
+			System.err.println(e);
+		}
+	}
+}

@@ -1,0 +1,17 @@
+package fr.esgi.project.Thread;
+
+public class App {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		Thread thread = new MyThread();
+		thread.start();
+		
+		MyRunnable r = new Grabber("http://www.oracle.com/");
+		Thread t = new Thread(r); // création
+		t.start(); // start
+	}
+
+}

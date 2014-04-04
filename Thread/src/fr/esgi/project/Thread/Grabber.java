@@ -1,0 +1,30 @@
+package fr.esgi.project.Thread;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
+
+public class Grabber implements Runnable {
+	private String url;
+	public Grabber(String u){
+		this.url = u;
+	}
+	
+	@Override
+	public void run() {
+        try {
+    		URL oracle = new URL(this.url);
+            URLConnection yc = oracle.openConnection();
+            BufferedReader in = new BufferedReader(new InputStreamReader(yc.getInputStream()));
+            String inputLine;
+            while ((inputLine = in.readLine()) != null) 
+                System.out.println(inputLine);
+			in.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.err.println(e);
+		}
+	}
+}

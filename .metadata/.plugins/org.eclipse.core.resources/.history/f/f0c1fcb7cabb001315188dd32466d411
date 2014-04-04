@@ -1,0 +1,15 @@
+package fr.esgi.project.ProcessBuilder;
+
+import java.io.File;
+
+import fr.esgi.project.ProcessBuilder.interfaces.ICompress;
+
+public class Compress implements ICompress {
+
+	@Override
+	public void compress(File dest, File... src) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+}

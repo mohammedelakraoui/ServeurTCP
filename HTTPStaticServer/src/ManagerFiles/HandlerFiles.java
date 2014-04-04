@@ -43,9 +43,11 @@ public class HandlerFiles implements IHttpHandler{
         	html += ListeFilesAndFolders(file, request, response);
         	html += "</table></body></html>";
     	}
-//    	this.setResponseHeader(response, html);
-//    	response.getWriter().write("\r\n");
+    	response.getWriter().write("HTTP/1.1 200 OK\r\n");
+    	this.setResponseHeader(response, html);
+    	response.getWriter().write("\r\n");
     	response.getWriter().write(html);
+    	response.getWriter().write("\r\n\r\n");
     	response.flush();
     }
 
@@ -64,8 +66,7 @@ public class HandlerFiles implements IHttpHandler{
     	Date date = new Date();
     	SecureRandom random = new SecureRandom();
     	response.setContentType("text/html; charset=UTF-8");
-    	response.addHeader("Transfer-Encoding", "chunked");
-//    	response.addHeader("Date", date.toString());
+    	response.addHeader("Date", date.toString());
     	response.addHeader("Server", "HttpStaticServer");
     	response.addHeader("Connection", "close");
     	//Identifie une version spécifique de la resource

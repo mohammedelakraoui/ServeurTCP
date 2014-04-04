@@ -1,0 +1,16 @@
+package fr.esgi.project.ProcessBuilder;
+
+import java.io.File;
+
+public class App {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		File dest = new File("C:\\Users\\Ernsso\\Documents\\ESGI\\5eme_annee\\ArchiDistrib\\Proxy.rar")
+		Compress c = new Compress();
+		c.compress(dest, src)
+	}
+
+}

@@ -1,13 +1,9 @@
-INDEX VERSION 1.126+C:\Documents and Settings\pierre jean\Mes documents\Ernsso\ESGI\5 eme année\Architecture Distribuée\ServeurTCP\.metadata\.plugins\org.eclipse.jdt.core
-1871587534.index
+INDEX VERSION 1.126+C:\Users\Ernsso\Documents\ESGI\5eme_annee\ArchiDistrib\ServeurTCP\.metadata\.plugins\org.eclipse.jdt.core
+4267160747.index
 3261799716.index
-2009609959.index
-3625057898.index
-835449938.index
-3189733512.index
-2375769044.index
-2984353535.index
-3529206711.index
-2134583008.index
-1652314424.index
 1702473334.index
+1652314424.index
+707109087.index
+2009609959.index
+3189733512.index
+2134583008.index
