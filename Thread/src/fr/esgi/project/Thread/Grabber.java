@@ -12,7 +12,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Grabber implements Runnable {
-	private String url;
+	private String url, startUrl;
 	private Pattern htmltag;
 	private Pattern link;
 	
@@ -25,8 +25,17 @@ public class Grabber implements Runnable {
 	@Override
 	public void run() {
     	List<String> links = this.getLinks(this.url);
+//    	List<String> links = this.filterUrl(this.url, this.getLinks(this.url));
     	for(String s : links)
     		System.out.println(s);
+	}
+	
+	private List<String> filterUrl(String url, List<String> links){
+		List<String> filteredLinks = new ArrayList<String>();
+		for(String s : links)
+			if(s.matches(this.url.replaceAll("(https?://[^/]*/?)", "$1")+".*"))
+				filteredLinks.add(s);
+		return filteredLinks;
 	}
 
 	private List<String> getLinks(String url) {
@@ -38,7 +47,6 @@ public class Grabber implements Runnable {
 			while ((s = bufferedReader.readLine()) != null) {
 				builder.append(s);
 			}
-	
 			Matcher tagmatch = htmltag.matcher(builder.toString());
 			while (tagmatch.find()) {
 				Matcher matcher = link.matcher(tagmatch.group());
@@ -61,7 +69,7 @@ public class Grabber implements Runnable {
 	}
 	
 	private String makeAbsolute(String url, String link) {
-		if (link.matches("http://.*")) {
+		if (link.matches("https?://.*")) {
 			return link;
 		}
 		if (link.matches("/.*") && url.matches(".*$[^/]")) {
