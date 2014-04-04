@@ -24,6 +24,19 @@ public class Grabber implements Runnable {
 	
 	@Override
 	public void run() {
+//        try {
+//    		URL oracle = new URL(this.url);
+//            URLConnection yc = oracle.openConnection();
+//            BufferedReader in = new BufferedReader(new InputStreamReader(yc.getInputStream()));
+//            String inputLine;
+//            while ((inputLine = in.readLine()) != null) 
+//                System.out.println(inputLine);
+//			in.close();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			System.err.println(e);
+//		}
+
     	List<String> links = this.getLinks(this.url);
     	for(String s : links)
     		System.out.println(s);
