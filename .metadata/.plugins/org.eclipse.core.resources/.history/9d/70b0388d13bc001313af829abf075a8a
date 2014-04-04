@@ -1,0 +1,19 @@
+package fr.esgi.project.Thread;
+
+import java.util.PriorityQueue;
+
+import org.esgi.thread.PoolWorker;
+
+public class ThreadPool<T extends Thread> {
+	PriorityQueue<Runnable> queue = new PriorityQueue<>();
+	T workers;
+	Object lock = new Object();
+	
+	public ThreadPool<T>(){
+		workers = new T[len];
+		for (int i=0;i<len;i++){
+			workers[i]= new PoolWorker(this);
+			workers[i].start();
+		}
+	}
+}

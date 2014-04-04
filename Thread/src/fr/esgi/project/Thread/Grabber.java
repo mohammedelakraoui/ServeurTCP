@@ -11,12 +11,14 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Grabber implements Runnable {
+public class Grabber extends Thread{
+	ThreadPool pool;
 	private String url, startUrl;
 	private Pattern htmltag;
 	private Pattern link;
 	
-	public Grabber(String u){
+	public Grabber(ThreadPool tp, String u){
+		this.pool = tp;
 		this.url = u;
 	    htmltag = Pattern.compile("<a\\b[^>]*href=\"[^>]*>(.*?)</a>");
 	    link = Pattern.compile("href=\"[^>]*\">");
@@ -24,8 +26,8 @@ public class Grabber implements Runnable {
 	
 	@Override
 	public void run() {
-    	List<String> links = this.getLinks(this.url);
-//    	List<String> links = this.filterUrl(this.url, this.getLinks(this.url));
+//    	List<String> links = this.getLinks(this.url);
+    	List<String> links = this.filterUrl(this.url, this.getLinks(this.url));
     	for(String s : links)
     		System.out.println(s);
 	}
@@ -33,7 +35,7 @@ public class Grabber implements Runnable {
 	private List<String> filterUrl(String url, List<String> links){
 		List<String> filteredLinks = new ArrayList<String>();
 		for(String s : links)
-			if(s.matches(this.url.replaceAll("(https?://[^/]*/?)", "$1")+".*"))
+			if(s.matches(this.url.replaceAll("(https?://[^/]*)/?.*", "$1")+"/.*"))
 				filteredLinks.add(s);
 		return filteredLinks;
 	}
